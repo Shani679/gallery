@@ -111,7 +111,6 @@ const DetailsView = ({item, updateItem, setCurrentItem, deleteItem}) => {
  
     const [title, setTitle] = useState(item.title);
     const [name, setName] = useState(item.name);
-    const [editable, setEditable] = useState(null);
 
     const onKeyDownHandler = (e) => {
         if(e.keyCode === 13){
@@ -121,7 +120,6 @@ const DetailsView = ({item, updateItem, setCurrentItem, deleteItem}) => {
 
     const onBlurHandler = () => {
         if(item.name !== name || title !== item.title){
-            setEditable(null);
             const updatedItem = {
                 ...item,
                 name: name,
@@ -147,18 +145,14 @@ const DetailsView = ({item, updateItem, setCurrentItem, deleteItem}) => {
                     <Input 
                         type="text"
                         id="title"
-                        isEditable={editable === "title"} 
                         value={title} 
-                        onFocus={e => setEditable(e.target.id)}
                         onBlur={onBlurHandler}
                         onKeyDown={onKeyDownHandler}
                         onChange={e => setTitle(e.target.value)}/>
                     <Input 
                         type="text"
                         id="name"
-                        isEditable={editable === "name"} 
                         value={name} 
-                        onFocus={e => setEditable(e.target.id)}
                         onBlur={onBlurHandler}
                         onKeyDown={onKeyDownHandler}
                         onChange={e => setName(e.target.value)}/>
