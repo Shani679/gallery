@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import { Header } from './components/Header/Header';
+import Grid from './components/Gallery/Grid';
 
-function App() {
+const View = styled.div`
+  background: #e4ebf1;
+  min-height: 100vh;
+  color: #5b616a;
+  display: flex;
+  flex-direction: column;
+  font-family: Helvetica,sans-serif;
+`
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <View>
+      <Header/>
+      <Grid/>
+    </View>
   );
 }
 
