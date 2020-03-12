@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Item } from './Item';
 import DetailsView from '../DetailsView/DetailsView';
@@ -34,14 +34,12 @@ const Grid = ({items, currentItem, setCurrentItem}) => {
 const mapStateToProps = (state) => {
     return {
         items: state.items,
-        // showViewDetails: state.showViewDetails,
         currentItem: state.currentItem
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // toggleDetailsView: flag => dispatch(actions.toggleDetailsView(flag)),
         setCurrentItem: item => dispatch(actions.setCurrentItem(item))
     };
 };

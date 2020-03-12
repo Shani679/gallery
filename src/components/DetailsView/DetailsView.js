@@ -123,7 +123,7 @@ const DetailsView = ({item, updateItem, setCurrentItem, deleteItem}) => {
         <Layout id="popup" onClick={onClose}>
             <Container>
                 <div>
-                    <img src={require(`../../images/gallery/${item.src}`)}/>
+                    <img src={require(`../../images/gallery/${item.src}`)} alt={item.name}/>
                 </div>
                 <div>
                     <Input 

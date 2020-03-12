@@ -1,7 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    // showViewDetails: false,
     items: [
         {src: "sample.jpg", id: 0, title: "The Sample", name: "sample"},
         {src: "paris-preview.jpg", id: 1, title: "Eiffel", name: "paris-preview"},
@@ -19,7 +18,7 @@ const updateItem = (state, {item}) => {
 
 const deleteItem = (state, {itemId}) => {
     const items = state.items.filter(el => el.id !== itemId);
-    return {...state, items, showViewDetails: false, currentItem: {}};
+    return {...state, items, currentItem: {}};
 }
 
 const reducer = ( state = initialState, action ) => {
