@@ -3,7 +3,7 @@ import styled, {keyframes} from 'styled-components';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import trashIcon from '../../images/trash.png';
-
+import editIcon from '../../images/edit.png';
 
 const fadeIn = keyframes`
   from {
@@ -52,14 +52,19 @@ const Container = styled.div`
             padding: 0 5px;
             box-sizing: border-box;
             font-size: 13px;
-            pointer-events: none;
-        }
-        > img{
-            width: 20px;
-            position: absolute;
-            right: 15px;
-            bottom: 15px;
-            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            > div{
+                display: flex;
+                img{
+                    width: 17px;
+                    cursor: pointer;
+                }
+            }
+            &:last-child{
+                margin-top: 20px;
+            }
         }
     }
     @media(max-width: 768px){
@@ -74,6 +79,7 @@ const Container = styled.div`
 const Input = styled.input`
     border-radius: 4px;
     border: 1px solid transparent;
+    margin-bottom: 7px;
     &:hover{
         border: 1px solid #969494;
     }
@@ -82,13 +88,25 @@ const Input = styled.input`
     }
     background-color: #fff;
     padding: 7px 5px;
-    margin-bottom: 7px;
+    
     outline: none;
     font-size: ${({id}) => id === "title" ? "15px" :"13px"};
     font-weight: ${({id}) => id === "title" && "700"};
     color: #5b616a;
 `
 
+const Button = styled.button`
+    background: #0e2f5a;
+    border: none;
+    color: #fff;
+    width: 70px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 4px;
+    font-family: inherit;
+    cursor: pointer;
+`
 const DetailsView = ({item, updateItem, setCurrentItem, deleteItem}) => {
  
     const [title, setTitle] = useState(item.title);
@@ -145,7 +163,13 @@ const DetailsView = ({item, updateItem, setCurrentItem, deleteItem}) => {
                         onKeyDown={onKeyDownHandler}
                         onChange={e => setName(e.target.value)}/>
                     <div>Type: {item.src.split(".")[1]}</div>
-                    <img src={trashIcon} alt="delete" onClick={() => deleteItem(item.id)}/>
+                    <div>
+                        <Button onClick={() => setCurrentItem({})}>Close</Button>
+                        <div>
+                            <img src={editIcon} alt="edit" onClick={() => document.getElementById("title").focus()}/>
+                            <img src={trashIcon} alt="delete" onClick={() => deleteItem(item.id)}/>
+                        </div>
+                    </div>
                 </div>
             </Container>
         </Layout>
